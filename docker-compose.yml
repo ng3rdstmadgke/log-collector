@@ -1,0 +1,17 @@
+---
+version: '3'
+services:
+  postgresql:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    networks:
+      br-mido01:
+        aliases:
+          - postgresql
+    ports:
+      - "5432:5432"
+networks:
+  br-mido01:
+    external: true
