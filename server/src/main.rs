@@ -35,7 +35,7 @@ pub fn app(server: Server) -> App<Server> {
     use crate::handlers::*;
 
     let app: App<Server> = App::with_state(server)
-        .route("/csv" , Method::POST, handle_post_csv)  // ログをCSVファイルで受け取っとDBに保存する
+        .route("/csv" , Method::POST, handle_post_csv)  // ログをCSVファイルで受け取ってDBに保存する
         .route("/logs", Method::POST, handle_post_logs) // ログをJSON形式で受け取っとDBに保存する
         .route("/csv" , Method::GET , handle_get_csv)   // DBにあるログをCSVファイルとして返す。(from=timestamp, until=timestampを受け付ける)
         .route("/logs", Method::GET , handle_get_logs); // DBにあるログをJSON形式で返す。(from=timestamp, until=timestampを受け付ける)
