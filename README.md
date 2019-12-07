@@ -2,6 +2,21 @@
 
 ## サーバー起動
 ```bash
+cd log-collector
+
+# diesel_cliインストール
+cargo install diesel_cli --no-default-features --features postgres
+
+# DB起動
+(cd docker-compose && docker-compose up -d)
+
+# DB作成
+(cd server && diesel setup)
+
+# マイグレーション実行
+(cd server && diesel migration run && diesel migration redo)
+
+# サーバー起動
 RUST_LOG=server=debug cargo run --bin server
 ```
 
